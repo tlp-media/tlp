@@ -41,6 +41,9 @@ app.get("/about", newRoute("about/about"));
 
 app.get("/raw", newRoute("raw/raw"));
 
+app.get("/raw/json", newRoute("raw/json/json"));
+
+
 app.use((req, res) => {
     res.status(404).render("404.ejs"); // Render 404.ejs for any undefined routes
 });

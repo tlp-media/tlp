@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "toml": "^3.0.0"
+  },
+  "devDependencies": {
+    "toml-json": "^1.1.4"
   }
 }
