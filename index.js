@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const toml = require('toml');
-const fs = require('fs').promises;  // Use promises API for simpler async handling
+const fs = require('fs').promises;
 const path = require('path');
 
 app.set("views", path.join(__dirname, "public"));
@@ -42,7 +42,6 @@ app.get("/about", newRoute("about/about"));
 app.get("/raw", newRoute("raw/raw"));
 
 app.get("/raw/json", newRoute("raw/json/json"));
-
 
 app.use((req, res) => {
     res.status(404).render("404.ejs"); // Render 404.ejs for any undefined routes
