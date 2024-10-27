@@ -1,0 +1,76 @@
+<div class="header">
+  <a class="active" href="/">Home</a>
+  <a class="modal-btn" data-target="contactModal">Contact</a>
+  <a class="modal-btn" data-target="supportModal">Support</a>
+  <a href="/about">About</a>
+  <a href="https://t.me/linux_ukraine">Telegram</a>
+</div>
+
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Matrix: <a href="https://matrix.to/#/@rendick:matrix.org">@rendick:matrix.org</a></p>
+	<p>Soon...</p>
+  </div>
+</div>
+
+<div id="supportModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<p>Soon...</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".modal-btn").forEach(btn => {
+    btn.onclick = function(){
+      const target = document.getElementById(btn.getAttribute("data-target"));
+      if (target) target.style.display = "block";
+    };
+  });
+
+  document.querySelectorAll(".modal").forEach(modal => {
+    modal.onclick = function(event) {
+      if (event.target.classList.contains("close") || event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  });
+</script>
+
+<style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+</style>

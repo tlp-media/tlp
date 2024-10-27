@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/style/style.css" />
+    <title>TLP Media</title>
+</head>
+
+<body>
+    <%- include('components/header.ejs') %>
+    <div class="container">
+        <h1>Пости</h1>
+        <% posts.forEach(function(post) { %>
+        <div class="post">
+			<h2>
+                <p id="noti"><a href="<%= post.link %>" target="_blank" onclick="copyLink('<%= post.link %>')"><%= post.title %></a></p>
+			</h2>
+<p id="post-description-<%= post.title.replace(/[^a-z0-9]/gi, '_').toLowerCase() %>">
+    <%- post.description.replace(/\n/g, '<br>') %>
+</p>
+            <i><%= post.date %></i>
+        </div>
+        <% }); %>
+    </div>
+<style>
+a {
+	color: #000000;
+	text-decoration: none;
+}
+</style>
+
+<script>
+	function copyLink(link) {
+		navigator.clipboard.writeText(link).then(() => {
+			console.log("Link copied to clipboard: ", link)
+			let originalText = document.getElementById("noti").innerHTML;
+			document.getElementById("noti").innerHTML = "Link copied!"
+
+			setTimeout(() => {
+				document.getElementById("noti").innerHTML = originalText;
+			}, 3000);
+
+		}).catch(err => {
+			console.error("Failed to copy link: ", link)
+		})
+	}
+</script>
+</body>
+</html>
